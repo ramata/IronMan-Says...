@@ -41,6 +41,15 @@ function playAudio(index) {
     audio.src = (soundAdd[index]);
     audio.play();
 }
+function wonGame() {
+  audio.src = success;
+  audio.play();
+}
+function lostGame() {
+  audio.src = failure;
+  audio.play();
+}
+
 
 function darkenPar(index) {
     parts[index].className += ' played';
@@ -62,12 +71,13 @@ function compareSequences() {
     // console.log('compared');
     for (var i = 0; i < userSequence.length; i += 1) {
         if (userSequence[i] !== ironManSequence[i]) {
-            return false;
+            return retry();
+
         }
       }
-       if (userSequence[i] === ironManSequence[i]){
-    return true;
-}
+//        if (userSequence[i] === ironManSequence[i]){
+//     return true;
+// }
 }
 
 function updateCount(inc) {
@@ -113,9 +123,9 @@ if (compare === false) {
 }
 
 
- else {
-    retry();
- }
+ // else {
+ //    retry();
+ // }
     if (userSequence.length === ironManSequence.length) {
         updateCount(1);
         setTimeout(ironManTurn, 1500);
