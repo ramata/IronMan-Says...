@@ -21,6 +21,7 @@ var soundAdd = ['a_sharp.mp3',
 
 var gameOn = false;
 
+
 //Store Iron Man's sequence of actions in this array
 var ironManSequence = [];
 var userSequence = [];
@@ -60,11 +61,13 @@ function ironManSays(i) {
 function compareSequences() {
     console.log('compared');
     for (var i = 0; i < userSequence.length; i += 1) {
-        if (ironManSequence[i] !== userSequence[i]) {
+        if ([userSequence[i]] !== [ironManSequence[i]]) {
             return false;
         }
-    }
+      }
+       if ([userSequence[i]] === [ironManSequence[i]]){
     return true;
+}
 }
 
 function updateCount(inc) {
@@ -82,7 +85,7 @@ function reset() {
 
 function retry() {
     userSequence = [];
-    endScreenMessage.innerHTML = 'Try Again';
+    endScreenMessage.innerHTML = 'Oops!';
     endScreen.classList.remove('hidden');
     setTimeout(function() {
         endScreen.classList.add('hidden');
@@ -99,20 +102,20 @@ function makePartsClickable(par, index) {
             playAudio(index);
             darkenPar(index);
             //compare partial sequence to ironMan sequence
-        }
-    });
-}
 //compare sequences  //todo make function
 var compare = compareSequences();
 if (compare === false) {
-        endScreenMessage.innerHTML = 'Lose';
+        endScreenMessage.innerHTML = 'You lose!';
         endScreen.classList.remove('hidden');
         setTimeout(function() {
             endScreen.classList.add('hidden');
     });
- } else {
-    retry();
 }
+
+
+ else {
+    retry();
+ }
     if (userSequence.length === ironManSequence.length) {
         updateCount(1);
         setTimeout(ironManTurn, 1500);
@@ -127,6 +130,9 @@ if (correctCount === 10) {
         gameStarted = true;
         ironManTurn();
     }, 5000);
+}
+}
+});
 }
 
 
