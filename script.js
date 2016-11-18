@@ -59,13 +59,13 @@ function ironManSays(i) {
 }
 
 function compareSequences() {
-    console.log('compared');
+    // console.log('compared');
     for (var i = 0; i < userSequence.length; i += 1) {
-        if ([userSequence[i]] !== [ironManSequence[i]]) {
+        if (userSequence[i] !== ironManSequence[i]) {
             return false;
         }
       }
-       if ([userSequence[i]] === [ironManSequence[i]]){
+       if (userSequence[i] === ironManSequence[i]){
     return true;
 }
 }
