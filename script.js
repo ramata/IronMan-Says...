@@ -10,6 +10,7 @@ var parts = document.getElementsByClassName('part');
 var gameStarted = false;
 var correctCount = 0;
 
+var opening = " https://youtu.be/xp1nKBoYAgw"
 var success = "applause.wav";
 var failure = "aww.wav";
 var soundAdd = ['a_sharp.mp3',
@@ -41,14 +42,23 @@ function playAudio(index) {
     audio.src = (soundAdd[index]);
     audio.play();
 }
+
 function wonGame() {
-  audio.src = success;
-  audio.play();
+    audio.src = success;
+    audio.play();
 }
+
 function lostGame() {
-  audio.src = failure;
-  audio.play();
+    audio.src = failure;
+    audio.play();
 }
+
+function openingGame() {
+  document.all.sound.src ="https://youtu.be/xp1nKBoYAgw";
+  audio.src = opening
+  audio.play()
+}
+window.onlaod=openingGame;
 
 
 function darkenPar(index) {
@@ -74,10 +84,7 @@ function compareSequences() {
             return retry();
 
         }
-      }
-//        if (userSequence[i] === ironManSequence[i]){
-//     return true;
-// }
+    }
 }
 
 function updateCount(inc) {
@@ -94,8 +101,9 @@ function reset() {
 }
 
 function retry() {
+    lostGame()
     userSequence = [];
-    endScreenMessage.innerHTML = 'Oops!';
+    endScreenMessage.innerHTML = 'Try again';
     endScreen.classList.remove('hidden');
     setTimeout(function() {
         endScreen.classList.add('hidden');
@@ -112,37 +120,34 @@ function makePartsClickable(par, index) {
             playAudio(index);
             darkenPar(index);
             //compare partial sequence to ironMan sequence
-//compare sequences  //todo make function
-var compare = compareSequences();
-if (compare === false) {
-        endScreenMessage.innerHTML = 'You lose!';
-        endScreen.classList.remove('hidden');
-        setTimeout(function() {
-            endScreen.classList.add('hidden');
+
+            var compare = compareSequences();
+            if (compare === false) {
+                endScreenMessage.innerHTML = 'You lose!';
+                endScreen.classList.remove('hidden');
+                setTimeout(function() {
+                    endScreen.classList.add('hidden');
+                });
+            }
+
+            if (userSequence.length === ironManSequence.length) {
+                updateCount(1);
+                setTimeout(ironManTurn, 1500);
+            }
+
+            if (correctCount === 8) {
+              wonGame()
+                endScreen.classList.remove('hidden');
+                endScreenMessage.innerHTML = 'Nice Job!';
+                gameStarted = false;
+                setTimeout(function() {
+                    endScreen.classList.add('hidden');
+                    gameStarted = true;
+                    ironManTurn();
+                }, 5000);
+            }
+        }
     });
-}
-
-
- // else {
- //    retry();
- // }
-    if (userSequence.length === ironManSequence.length) {
-        updateCount(1);
-        setTimeout(ironManTurn, 1500);
-    }
-
-if (correctCount === 10) {
-    endScreen.classList.remove('hidden');
-    endScreenMessage.innerHTML = 'Nice Job!';
-    gameStarted = false;
-    setTimeout(function() {
-        endScreen.classList.add('hidden');
-        gameStarted = true;
-        ironManTurn();
-    }, 5000);
-}
-}
-});
 }
 
 
