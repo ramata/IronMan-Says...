@@ -10,7 +10,7 @@ var parts = document.getElementsByClassName('part');
 var gameStarted = false;
 var correctCount = 0;
 
-var opening = " https://youtu.be/xp1nKBoYAgw"
+var opening = "ironman.mp3" // set variables to sound.//
 var success = "applause.wav";
 var failure = "aww.wav";
 var soundAdd = ['a_sharp.mp3',
@@ -23,7 +23,7 @@ var soundAdd = ['a_sharp.mp3',
 var gameOn = false;
 
 
-//Store Iron Man's sequence of actions in this array
+//Store Iron Man's sequence of actions in this array.//
 var ironManSequence = [];
 var userSequence = [];
 
@@ -53,12 +53,12 @@ function lostGame() {
     audio.play();
 }
 
-function openingGame() {
-  document.all.sound.src ="https://youtu.be/xp1nKBoYAgw";
-  audio.src = opening
-  audio.play()
-}
-window.onlaod=openingGame;
+// function openingGame() {
+//   var audioElement = document.createElement('audio');
+//     audioElement.setAttribute('src', 'ironman.mp3');
+// audioElement.play()
+// }
+// window.onload=openingGame;
 
 
 function darkenPar(index) {
@@ -77,7 +77,7 @@ function ironManSays(i) {
     }, i * 800);
 }
 
-function compareSequences() {
+function compareSequences() { // comparing userSeq to ironManSequence.//
     // console.log('compared');
     for (var i = 0; i < userSequence.length; i += 1) {
         if (userSequence[i] !== ironManSequence[i]) {
@@ -88,20 +88,20 @@ function compareSequences() {
 }
 
 function updateCount(inc) {
-    correctCount += inc;
+  correctCount += inc;
     count.innerHTML = correctCount;
 }
 
-function reset() {
+function reset() { // resets the score at the end of the game.//
+    gameStarted = false;
     ironManSequence = [];
     userSequence = [];
-    gameStarted = false;
     correctCount = 0;
     count.innerHTML = 0;
 }
 
-function retry() {
-    lostGame()
+function retry() { // this function uses the try again to let the user start another sequence.//
+    lostGame(); // calling the funtion to play the lost sound.//
     userSequence = [];
     endScreenMessage.innerHTML = 'Try again';
     endScreen.classList.remove('hidden');
@@ -119,11 +119,12 @@ function makePartsClickable(par, index) {
             userSequence.push(index);
             playAudio(index);
             darkenPar(index);
-            //compare partial sequence to ironMan sequence
 
+            // //compare partial sequence to ironMan sequence//
             var compare = compareSequences();
             if (compare === false) {
-                endScreenMessage.innerHTML = 'You lose!';
+            //  console.log('Gameover');
+                endScreenMessage.innerHTML = 'You lose';
                 endScreen.classList.remove('hidden');
                 setTimeout(function() {
                     endScreen.classList.add('hidden');
@@ -131,14 +132,15 @@ function makePartsClickable(par, index) {
             }
 
             if (userSequence.length === ironManSequence.length) {
-                updateCount(1);
+                updateCount(1); // the score increases when the answer is correct.//
                 setTimeout(ironManTurn, 1500);
             }
 
             if (correctCount === 8) {
-              wonGame()
+              wonGame() // calling the function of the winning sound.//
                 endScreen.classList.remove('hidden');
                 endScreenMessage.innerHTML = 'Nice Job!';
+                reset() // calling the reset function at the end of the game.
                 gameStarted = false;
                 setTimeout(function() {
                     endScreen.classList.add('hidden');
@@ -164,10 +166,11 @@ function ironManTurn() {
     }
 }
 
-startBtn.addEventListener('click', function() {
+startBtn.addEventListener('click', function() { //starts the game//
     if (gameStarted === false) {
         gameStarted = true;
         setTimeout(ironManTurn, 1000);
+
     }
 });
 

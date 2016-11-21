@@ -16,7 +16,7 @@ When you click on the wrong color, an alert saying " Try again" will pop up acco
 When you click on the right color, an alert saying "Correct!" will pop up, with a winning sound.
 
 Live site:
-https://github.com/ramata/ramata.github.io
+http://statistician-polecat-75808.bitballoon.com/
 
 Trello
 https://trello.com/b/5oSUlGTx/my-first-project
@@ -35,3 +35,9 @@ MP3 sound
 
 Wireframe
 https://IMG_0286.JPG
+
+Future Features
+
+Have a way for the user to choose the difficulty (easy, medium, or hard) where the easy mode plays the sequence slowly (one second per highlighted button) and the hard mode plays the sequence more quickly (1/4 second per highlight).
+
+Display a scoreboard of the longest sequence successfully played to date.
