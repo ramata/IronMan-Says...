@@ -13,7 +13,7 @@ Note: wait until the sequence is finished before you start pressing again the bu
 
 When you click on the wrong color, an alert saying " Try again" will pop up accompanied by a defeat sound.
 
-When you click on the right color, an alert saying "Correct!" will pop up, with a winning sound.
+When you win, an alert saying "Nice job!" will pop up, with a clapping sound.
 
 Live site:
 http://statistician-polecat-75808.bitballoon.com/
