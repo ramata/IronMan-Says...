@@ -34,7 +34,7 @@ Reset Button
 MP3 sound
 
 Wireframe
-https://IMG_0286.JPG
+![](https://IMG_0286.JPG)
 
 Future Features
 

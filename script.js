@@ -88,7 +88,7 @@ function compareSequences() { // comparing userSeq to ironManSequence.//
 }
 
 function updateCount(inc) {
-  correctCount += inc;
+    correctCount += inc;
     count.innerHTML = correctCount;
 }
 
@@ -123,7 +123,7 @@ function makePartsClickable(par, index) {
             // //compare partial sequence to ironMan sequence//
             var compare = compareSequences();
             if (compare === false) {
-            //  console.log('Gameover');
+                //  console.log('Gameover');
                 endScreenMessage.innerHTML = 'You lose';
                 endScreen.classList.remove('hidden');
                 setTimeout(function() {
@@ -137,7 +137,7 @@ function makePartsClickable(par, index) {
             }
 
             if (correctCount === 8) {
-              wonGame() // calling the function of the winning sound.//
+                wonGame() // calling the function of the winning sound.//
                 endScreen.classList.remove('hidden');
                 endScreenMessage.innerHTML = 'Nice Job!';
                 reset() // calling the reset function at the end of the game.
