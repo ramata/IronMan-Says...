@@ -34,7 +34,7 @@ Reset Button
 MP3 sound
 
 Wireframe
-![](https://IMG_0286.JPG)
+![](https://github.com/ramata/game/blob/master/IMG_0286.jpg?raw=true)
 
 Future Features
 
