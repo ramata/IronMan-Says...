@@ -7,7 +7,7 @@ Mouse click the correct buttons in the order given
 
 Follow the sound and lit up color to score a correct answer
 
-Complete a sequence of 10 and you win!
+Complete a sequence of 8 and you win!
 
 Note: wait until the sequence is finished before you start pressing again the buttons, or it may not register the move.
 
