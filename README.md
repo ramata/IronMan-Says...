@@ -30,7 +30,9 @@ Text-Editor - Atom
 Features
 
 Play Button
+
 Reset Button
+
 MP3 sound
 
 Wireframe

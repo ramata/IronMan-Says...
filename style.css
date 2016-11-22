@@ -13,6 +13,12 @@ body {
     position: relative;
 }
 
+.directions {
+  text-align: center;
+  color: #82CAFA;
+  font-size: 18px;
+}
+
 .part {
     border: 5px solid #111;
     display: inline-block;

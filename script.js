@@ -53,14 +53,6 @@ function lostGame() {
     audio.play();
 }
 
-// function openingGame() {
-//   var audioElement = document.createElement('audio');
-//     audioElement.setAttribute('src', 'ironman.mp3');
-// audioElement.play()
-// }
-// window.onload=openingGame;
-
-
 function darkenPar(index) {
     parts[index].className += ' played';
     setTimeout(function() {
@@ -81,6 +73,8 @@ function compareSequences() { // comparing userSeq to ironManSequence.//
     // console.log('compared');
     for (var i = 0; i < userSequence.length; i += 1) {
         if (userSequence[i] !== ironManSequence[i]) {
+            console.log("Wrong!")
+            reset(); //Why does this not set correctCount to 0??
             return retry();
 
         }
@@ -88,6 +82,7 @@ function compareSequences() { // comparing userSeq to ironManSequence.//
 }
 
 function updateCount(inc) {
+    console.log("updated");
     correctCount += inc;
     count.innerHTML = correctCount;
 }
@@ -97,7 +92,7 @@ function reset() { // resets the score at the end of the game.//
     ironManSequence = [];
     userSequence = [];
     correctCount = 0;
-    count.innerHTML = 0;
+    count.innerHTML = correctCount;
 }
 
 function retry() { // this function uses the try again to let the user start another sequence.//
@@ -131,8 +126,8 @@ function makePartsClickable(par, index) {
                 });
             }
 
-            if (userSequence.length === ironManSequence.length) {
-                updateCount(1); // the score increases when the answer is correct.//
+            if ((userSequence.length === ironManSequence.length) && ironManSequence != 0) {
+                updateCount(1); // the score increases when the answer is correct.// And sets it to 0 when it's not correct.
                 setTimeout(ironManTurn, 1500);
             }
 
@@ -140,7 +135,7 @@ function makePartsClickable(par, index) {
                 wonGame() // calling the function of the winning sound.//
                 endScreen.classList.remove('hidden');
                 endScreenMessage.innerHTML = 'Nice Job!';
-                reset() // calling the reset function at the end of the game.
+                reset(); // calling the reset function at the end of the game.
                 gameStarted = false;
                 setTimeout(function() {
                     endScreen.classList.add('hidden');
