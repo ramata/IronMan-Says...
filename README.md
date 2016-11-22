@@ -16,7 +16,7 @@ When you click on the wrong color, an alert saying " Try again" will pop up acco
 When you win, an alert saying "Nice job!" will pop up, with a clapping sound.
 
 Live site:
-http://statistician-polecat-75808.bitballoon.com/
+http://ironmansays.bitballoon.com/
 
 Trello
 https://trello.com/b/5oSUlGTx/my-first-project
