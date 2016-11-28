@@ -54,7 +54,7 @@ function lostGame() {
 }
 
 function darkenPar(index) {
-    parts[index].className += ' played';
+    parts[index].className +=  ' played';
     setTimeout(function() {
         parts[index].classList.remove('played');
     }, 500);
@@ -70,11 +70,10 @@ function ironManSays(i) {
 }
 
 function compareSequences() { // comparing userSeq to ironManSequence.//
-    // console.log('compared');
     for (var i = 0; i < userSequence.length; i += 1) {
         if (userSequence[i] !== ironManSequence[i]) {
-            console.log("Wrong!")
-            reset(); //Why does this not set correctCount to 0??
+            // console.log("Wrong!")
+            reset();
             return retry();
 
         }
@@ -126,7 +125,7 @@ function makePartsClickable(par, index) {
                 });
             }
 
-            if ((userSequence.length === ironManSequence.length) && ironManSequence != 0) {
+            if ((userSequence.length === ironManSequence.length) && ironManSequence.length != 0) {
                 updateCount(1); // the score increases when the answer is correct.// And sets it to 0 when it's not correct.
                 setTimeout(ironManTurn, 1500);
             }
